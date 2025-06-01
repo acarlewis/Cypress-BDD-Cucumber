@@ -15,18 +15,11 @@
   "author": "carlewis",
   "license": "ISC",
   "dependencies": {
-    "cypress-cucumber-preprocessor": "^4.3.1",
     "prettier": "^3.5.3"
   },
-  "cypress-cucumber-preprocessor": {
-    "nonGlobalStepDefinitions": true,
-    "stepDefinitions": "cypress/integration/step_definitions",
-    "cucumberJson": {
-      "generate": true,
-      "outputFolder": "cypress/cucumber-json"
-    },
-    "reporterOptions": {
-      "reportDir": "cypress/cucumber-json"
-    }
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^22.0.1",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
+    "esbuild": "^0.25.5"
   }
 }
