@@ -1,0 +1,32 @@
+{
+  "name": "cypress-bdd",
+  "version": "1.0.0",
+  "description": "cypress with cucumber",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open",
+    "cy:tests": "cypress run"
+  },
+  "keywords": [
+    "cypress",
+    "BDD",
+    "cucumber"
+  ],
+  "author": "carlewis",
+  "license": "ISC",
+  "dependencies": {
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "prettier": "^3.5.3"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true,
+    "stepDefinitions": "cypress/integration/step_definitions",
+    "cucumberJson": {
+      "generate": true,
+      "outputFolder": "cypress/cucumber-json"
+    },
+    "reporterOptions": {
+      "reportDir": "cypress/cucumber-json"
+    }
+  }
+}
