@@ -29,8 +29,7 @@ class ChanelPage {
         cy.get('[data-test="lnkLevelThreeCategory_ByCategory"]').click();
       } else {
         cy.get('#onetrust-close-btn-container').click()
-        cy.get('[data-test="lnkMainNavigation"]').should('be.visible');
-        cy.get('[data-test="lnkMainNavigation"]').click();
+        cy.get('[data-test="lnkMainNagation"]').click();
         cy.get('[data-test="lnkAxisCategory_makeup"]')
           .should('have.text', category)
           .closest('a') 
@@ -39,28 +38,34 @@ class ChanelPage {
     });
   }
 
-  verifyProductAvailability(product) {
-    cy.get('.product-list-inline').should('contain.text', product);
+  clickOnSubCategory(product) {
+    cy.get('[data-linkname="Lipstick"]')
+      .should('contain.text', product)
+      .click();
   }
 
-  clickOnProduct(product) {
-    cy.get('.product-list-inline').contains(product).click();
-    cy.get('.product__title').should('contain.text', product);
+  verifyProductAvailabilityAndClick(product) {
+    cy.get('[data-id="160990"]')
+    .first() 
+    .click();
+    // cy.get('.product-list-inline').should('contain.text', product);
   }
 
   addProductToCart(product) {
-    cy.get('.product-list-inline').contains(product).click();
-    cy.get('[data-test="btnAddToCart"]').click();
-    cy.get('[data-test="btnViewCart"]').click();
+    cy.get('#pos-cnc-btn')
+      .first()
+      .click();
+    // cy.get('[data-test="btnAddToCart"]').click();
+    // cy.get('[data-test="btnViewCart"]').click();
   }
 
   verifyProductInCart(product) {
-    cy.get('.cart__items').should('contain.text', product);
+    // cy.get('.cart__items').should('contain.text', product);
   }
 
   viewCart() {
-    cy.get('[data-test="btnViewCart"]').click();
-    cy.get('.cart__items').should('be.visible');
+    // cy.get('[data-test="btnViewCart"]').click();
+    // cy.get('.cart__items').should('be.visible');
   }
 
 

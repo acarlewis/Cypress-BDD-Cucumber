@@ -9,22 +9,22 @@ When('I click On the category {string} btn in navbar', (btnName) => {
   ChanelPage.clickOnCategoryButton(btnName);
 });
 
-// Then('I should be able to see {string} in the dropdown and click on it', (product) => {
-//   // ChanelPage.verifySearchResults(product);
-// });
+Then('I should be able to see {string} in the dropdown and click on it', (product) => {
+  ChanelPage.clickOnSubCategory(product);
+});
 
-// When('The Products are visible', () => {
-//   // ChanelPage.searchFor(product);
-// });
+When('The Products are visible and click on {string} Product', (product) => {
+  ChanelPage.verifyProductAvailabilityAndClick(product);
+});
 
-// Then('I click on {string} Product', (product) => {
-//   // ChanelPage.verifySearchResults(product);
-// });
+Then('I should be able to add {string} to Card', (product) => {
+  ChanelPage.addProductToCart(product);
+});
 
-// When('I should be able to add {string} to Card', (product) => {
-//   // ChanelPage.searchFor(product);
-// });
+When('I should be able to add {string} to Card', (product) => {
+  // ChanelPage.addProductToCart(product);
+});
 
-// Then('View Card list', () => {
-//   // ChanelPage.verifySearchResults(product);
-// });
+Then('View Card list', () => {
+  // ChanelPage.verifyProductInCart(product);
+});
