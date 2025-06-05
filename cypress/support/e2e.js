@@ -16,3 +16,7 @@
 // Import commands.js using ES2015 syntax:
 import './commands'
 import '@badeball/cypress-cucumber-preprocessor';
+
+beforeEach(() => {
+  cy.viewport(1920, 1080);
+});

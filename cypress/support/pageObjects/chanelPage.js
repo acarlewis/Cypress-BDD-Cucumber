@@ -1,3 +1,6 @@
+import * as elt from './objects'; // ✅
+
+
 class ChanelPage {
 
   // This section contains methods for first test case
@@ -20,27 +23,15 @@ class ChanelPage {
   // This section contains methods for second test case
 
   clickOnCategoryButton(category) {
-    cy.get('header').then(($header) => {
-      const hasNarrowClass = $header.hasClass('is-narrow');
-      cy.log(`Body has class is-narrow: ${hasNarrowClass}`);
-      if (!hasNarrowClass) {
-        cy.get('#makeup').click();
-        cy.get('.header__columns').should('be.visible');
-        cy.get('[data-test="lnkLevelThreeCategory_ByCategory"]').click();
-      } else {
-        cy.get('#onetrust-close-btn-container').click()
-        cy.get('[data-test="lnkMainNagation"]').click();
-        cy.get('[data-test="lnkAxisCategory_makeup"]')
-          .should('have.text', category)
-          .closest('a') 
-          .click();
-      }
-    });
+    elt.getCategory(category)
+      .find('span')
+      .should('contain.text', category)
+      .click();
   }
 
-  clickOnSubCategory(product) {
-    cy.get('[data-linkname="Lipstick"]')
-      .should('contain.text', product)
+  clickOnSubCategory(subCategory) {
+    elt.getSubCategory()
+      .should('contain.text', subCategory )
       .click();
   }
 
