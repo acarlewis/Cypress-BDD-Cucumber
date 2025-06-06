@@ -5,7 +5,6 @@ Feature: Chanel Add Product To Card
     When I click On the category "Makeup" btn in navbar
     Then I should be able to see "Lipstick" in the dropdown and click on it
     When The Products are visible and click on "ROUGE ALLURE" Product
-    Then I should be able to add "ROUGE ALLURE" to Card
-    # Then I should see "ROUGE ALLURE" in the card
-    # Then Compare the product price with "ROUGE ALLURE" price in the card
-    # Then View Card list
+    Then Get product price and add ROUGE ALLURE to card
+    When I open the card i should see "ROUGE ALLURE" in the card
+    Then I should compare the price of ROUGE ALLURE in the card with the product price

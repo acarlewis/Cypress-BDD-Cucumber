@@ -23,3 +23,11 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+
+// Custom command to compare stored alias value to actual value
+Cypress.Commands.add('comparePrices', (aliasName, actualPrice) => {
+  cy.get(`@${aliasName}`).then((expectedPrice) => {
+    expect(actualPrice).to.eq(expectedPrice);
+  });
+});

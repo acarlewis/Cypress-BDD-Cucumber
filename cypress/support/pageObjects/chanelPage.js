@@ -36,27 +36,57 @@ class ChanelPage {
   }
 
   verifyProductAvailabilityAndClick(product) {
-    cy.get('[data-id="160990"]')
-    .first() 
-    .click();
+    elt.getRougeAllureProduct().click();
     // cy.get('.product-list-inline').should('contain.text', product);
   }
 
-  addProductToCart(product) {
-    cy.get('#pos-cnc-btn')
-      .first()
-      .click();
-    // cy.get('[data-test="btnAddToCart"]').click();
-    // cy.get('[data-test="btnViewCart"]').click();
+  GetProductPrice() {
+    elt.getProductPrice().then((price) => {
+      const productPrice = price.text().trim();
+      cy.log(`Product Price: ${productPrice}`);
+      // You can store the price in a variable or use it as needed
+      // For example, you can save it to the Cypress environment:
+      cy.wrap(productPrice).as('productPrice');
+    });
   }
 
-  verifyProductInCart(product) {
-    // cy.get('.cart__items').should('contain.text', product);
+  addProductToCart() {
+    elt.getAddToBagBtn().click();
+    elt.getCardModal()
+      .should('be.visible')
+      .then(() => {
+        elt.getContinueShoppingbtn().should('not.have.attr', 'hidden').click();
+      }
+    );
   }
 
-  viewCart() {
-    // cy.get('[data-test="btnViewCart"]').click();
-    // cy.get('.cart__items').should('be.visible');
+  verifyProductInCart(productName) {
+    elt.getCartButton().click()
+    elt.getCardModal()
+      .should('be.visible')
+      .then(() => {
+        elt.getCheckoutbtn().click();
+      }
+    );
+
+    cy.get('.cart-product-list').should('be.visible');
+    cy.get('[data-test="lblProductTitle_160990"]').should('contain.text', productName);
+  }
+
+  compareProductPrice() {
+    // cy.get('span').should('have.class', 'heading is-7 js-text-ltr')
+    //   .filter((i, el) => el.innerText.trim() === productName)
+    //   .first()
+    //   .closest('article')
+    //   .within(() => {
+    //     cy.get('.price').should('contain.text', expectedPrice); // assert price
+    //   }
+    // );
+    cy.get('[data-test="lblProductPrice_160990"]')
+      .then((price) => {
+      const cartPrice = price.text().trim();
+      cy.comparePrices('productPrice', cartPrice);
+    });
   }
 
 

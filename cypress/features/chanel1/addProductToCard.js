@@ -17,14 +17,15 @@ When('The Products are visible and click on {string} Product', (product) => {
   ChanelPage.verifyProductAvailabilityAndClick(product);
 });
 
-Then('I should be able to add {string} to Card', (product) => {
-  ChanelPage.addProductToCart(product);
+Then('Get product price and add ROUGE ALLURE to card', () => {
+  ChanelPage.GetProductPrice();
+  ChanelPage.addProductToCart();
 });
 
-When('I should be able to add {string} to Card', (product) => {
-  // ChanelPage.addProductToCart(product);
+When('I open the card i should see {string} in the card', (product) => {
+  ChanelPage.verifyProductInCart(product);
 });
 
-Then('View Card list', () => {
-  // ChanelPage.verifyProductInCart(product);
+Then('I should compare the price of ROUGE ALLURE in the card with the product price', () => {
+  // ChanelPage.compareProductPrice(product);
 });
