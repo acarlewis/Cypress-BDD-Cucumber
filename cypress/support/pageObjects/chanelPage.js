@@ -23,6 +23,7 @@ class ChanelPage {
   // This section contains methods for second test case
 
   clickOnCategoryButton(category) {
+    elt.getCookiesSettingsBtn().click();
     elt.getCategory(category)
       .find('span')
       .should('contain.text', category)
@@ -51,7 +52,10 @@ class ChanelPage {
   }
 
   addProductToCart() {
-    elt.getAddToBagBtn().click();
+
+    // elt.getAddToBagBtn().should('have.class', 'product-details__ctas').click();
+    elt.getAddToBagBtn().eq(0).click();
+
     elt.getCardModal()
       .should('be.visible')
       .then(() => {
